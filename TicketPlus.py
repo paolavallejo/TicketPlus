@@ -1,3 +1,5 @@
+from InventarioStub import InventarioStub
+
 class TicketService:
 
     def __init__(self, inventario, repositorio, email_service):
