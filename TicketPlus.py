@@ -1,4 +1,5 @@
 from InventarioStub import InventarioStub
+from UsuarioDummy import UsuarioDummy
 
 class TicketService:
 
@@ -22,7 +23,7 @@ class TicketService:
 
 service = TicketService(
     InventarioStub(),
-    None,
+    UsuarioDummy(),
     None
 )
 
