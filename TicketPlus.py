@@ -1,5 +1,9 @@
 from InventarioStub import InventarioStub
 from UsuarioDummy import UsuarioDummy
+from RepositorioFake import RepositorioFake
+from EmailDummy import EmailDummy
+from unittest.mock import Mock
+from InventarioSpy import InventarioSpy
 
 class TicketService:
 
@@ -21,12 +25,25 @@ class TicketService:
 
         return True
 
+email_mock = Mock()
+
+inventario_spy = InventarioSpy()
+
 service = TicketService(
-    InventarioStub(),
-    UsuarioDummy(),
-    None
+    #InventarioStub(),
+    inventario_spy,
+    #UsuarioDummy(),
+    RepositorioFake(),
+    #EmailDummy()
+    email_mock
 )
 
-resultado = service.comprar("Ana", 2)
+resultado = service.comprar(UsuarioDummy(), 2)
+
+email_mock.enviar_confirmacion.assert_called_once()
 
 print(resultado)
+
+service.comprar(UsuarioDummy(),1)
+
+print(inventario_spy.veces_consultado)

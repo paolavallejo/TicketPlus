@@ -1,5 +1,5 @@
 class UsuarioDummy:
     pass
 
-usuario = UsuarioDummy()
-print(usuario)
+#usuario = UsuarioDummy()
+#print(usuario)
